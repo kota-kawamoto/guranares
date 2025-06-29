@@ -5,8 +5,8 @@ import { useEffect, useRef, useState } from "react"
 
 const companyInfo = {
   name: "株式会社グランアレス",
-  address: "神奈川県横浜市中区長者町1丁目２番地グランカーサ横濱石川町611号室",
-  ceo: "森田輝",
+  address: "",
+  ceo: "",
   business: ["不動産売買"],
 }
 

@@ -6,8 +6,8 @@ import Navigation from '@/components/Navigation'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: '株式会社グランアレス - 不動産売買の専門企業',
-  description: '株式会社グランアレスは、不動産売買の専門企業です。豊富な経験と実績を持つプロフェッショナルが、お客様の不動産取引をサポートいたします。',
+  title: '不動産売買の専門企業',
+  description: '不動産売買の専門企業です。豊富な経験と実績を持つプロフェッショナルが、お客様の不動産取引をサポートいたします。',
 }
 
 export default function RootLayout({
