@@ -8,7 +8,6 @@ import { usePathname } from 'next/navigation'
 
 const navigation = [
   { name: 'ホーム', href: '/' },
-  { name: 'お問い合わせ', href: '/contact' },
 ]
 
 function classNames(...classes: string[]) {
@@ -27,7 +26,7 @@ export default function Navigation() {
               <div className="flex">
                 <div className="flex flex-shrink-0 items-center">
                   <Link href="/" className="text-xl font-bold text-gray-900">
-                    SEA.
+                    株式会社グランアレス
                   </Link>
                 </div>
                 <div className="hidden sm:ml-6 sm:flex sm:space-x-8">

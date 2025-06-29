@@ -4,89 +4,22 @@ import Image from "next/image"
 import { useEffect, useRef, useState } from "react"
 
 const companyInfo = {
-  name: "株式会社SEA",
-  established: "2025年6月11日",
-  address: "神奈川県横浜市金沢区柴町",
-  phone: "080-3517-1615",
-  employees: "８名（業務委託含む）",
-  ceo: "川元航太",
-  business: ["営業代行", "営業コンサルティング", "ITコンサルティング", "SES"],
-  capital: "100万円",
-  mail: {
-    sales: "sales@kk-sea.com",
-    it: "kawamoto@kk-sea.com",
-  },
+  name: "株式会社グランアレス",
+  address: "神奈川県横浜市中区長者町1丁目２番地グランカーサ横濱石川町611号室",
+  ceo: "森田輝",
+  business: ["不動産売買"],
 }
 
 const features = [
   {
-    name: "営業代行サービス",
+    name: "不動産売買サービス",
     description:
-      "豊富な経験と実績を持つ営業のプロフェッショナルが、お客様に代わって営業活動を行います。新規顧客の開拓から、商談・提案まで、幅広い営業活動をサポートいたします。",
-    details: ["新規顧客開拓", "商談・提案"],
+      "豊富な経験と実績を持つ不動産のプロフェッショナルが、お客様の不動産売買をサポートいたします。物件の査定から売却・購入まで、安心してご利用いただけるサービスを提供します。",
+    details: ["不動産査定", "売却・購入サポート", "物件紹介"],
     image: "/sales.jpg",
-    icon: "📈",
-  },
-  {
-    name: "ITサービス",
-    description:
-      "ITを活用したビジネス支援サービスを提供します。SES、SNS運用、HP作成など、最新のテクノロジーを駆使して、お客様のビジネスをサポートします。",
-    details: ["SES（システムエンジニアリングサービス）", "SNS運用・マーケティング", "HP作成・運用"],
-    image: "/technology.jpg",
-    icon: "💻",
+    icon: "🏠",
   },
 ]
-
-const stats = [
-  { name: "設立年", value: 2025, suffix: "年" },
-  { name: "従業員数", value: 8, suffix: "名" },
-  { name: "資本金", value: 100, suffix: "万円" },
-  { name: "事業領域", value: 3, suffix: "分野" },
-]
-
-// カウントアップフック
-function useCountUp(end: number, duration = 2000) {
-  const [count, setCount] = useState(0)
-  const [isVisible, setIsVisible] = useState(false)
-  const ref = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-        }
-      },
-      { threshold: 0.1 },
-    )
-
-    if (ref.current) {
-      observer.observe(ref.current)
-    }
-
-    return () => observer.disconnect()
-  }, [])
-
-  useEffect(() => {
-    if (!isVisible) return
-
-    let startTime: number
-    const animate = (currentTime: number) => {
-      if (!startTime) startTime = currentTime
-      const progress = Math.min((currentTime - startTime) / duration, 1)
-
-      setCount(Math.floor(progress * end))
-
-      if (progress < 1) {
-        requestAnimationFrame(animate)
-      }
-    }
-
-    requestAnimationFrame(animate)
-  }, [end, duration, isVisible])
-
-  return { count, ref, setIsVisible }
-}
 
 // スクロールアニメーション用フック
 function useScrollAnimation() {
@@ -196,21 +129,6 @@ function FeatureItem({ feature, index }: { feature: (typeof features)[0]; index:
   )
 }
 
-// 統計カウンター コンポーネント
-function StatCounter({ stat }: { stat: (typeof stats)[0] }) {
-  const { count, ref } = useCountUp(stat.value)
-
-  return (
-    <div ref={ref} className="text-center">
-      <div className="text-4xl font-bold text-white mb-2">
-        {count}
-        {stat.suffix}
-      </div>
-      <div className="text-gray-300">{stat.name}</div>
-    </div>
-  )
-}
-
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false)
 
@@ -237,18 +155,18 @@ export default function Home() {
           >
             <div className="mb-8">
               <span className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white text-sm font-medium border border-white/20 animate-bounce">
-                営業 × IT で未来を創造
+                不動産売買の専門企業
               </span>
             </div>
             <h1 className="text-4xl font-black tracking-tight text-white sm:text-6xl mb-6 drop-shadow-2xl">
-              営業 × IT
+              不動産売買
               <br />
-              <span className="text-5xl sm:text-7xl text-white font-black drop-shadow-2xl">ビジネスの成長を最大化</span>
+              <span className="text-5xl sm:text-7xl text-white font-black drop-shadow-2xl">安心・信頼の専門企業</span>
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-200 animate-fade-in-up">
-              株式会社SEAは、営業とITを通じて、企業の成長を最大化します。
+              株式会社グランアレスは、不動産売買の専門企業です。
               <br />
-              本質的な価値を提供し、柔軟な戦略を構築、可能性を最大化します。
+              豊富な経験と実績を持つプロフェッショナルが、お客様の不動産取引をサポートいたします。
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <button className="group relative px-8 py-4 bg-gray-900 text-white font-bold rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl border border-gray-800">
@@ -270,40 +188,23 @@ export default function Home() {
         </div>
       </div>
 
-      {/* 統計セクション */}
-      <div className="relative -mt-20 z-10">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="bg-gray-900 rounded-2xl shadow-2xl p-8 border border-gray-800">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-              {stats.map((stat) => (
-                <StatCounter key={stat.name} stat={stat} />
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* サービス内容セクション */}
       <div className="bg-white py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:text-center mb-16">
             <h2 className="text-base font-bold leading-7 text-gray-900 uppercase tracking-wider">サービス内容</h2>
             <p className="mt-2 text-3xl font-black tracking-tight text-gray-900 sm:text-4xl">
-              ビジネスの成長を最大化する
+              不動産売買の
               <br />
-              <span className="text-black">トータルソリューション</span>
+              <span className="text-black">専門サービス</span>
             </p>
             <p className="mt-6 text-lg leading-8 text-gray-600">
-              株式会社SEAでは、営業とITを融合させたサービスを提供し、企業の成長と発展をサポートします。
+              株式会社グランアレスでは、不動産売買の専門サービスを提供し、お客様の不動産取引をサポートいたします。
             </p>
           </div>
 
-          <div className="mx-auto mt-16 max-w-7xl sm:mt-20 lg:mt-24">
-            <div className="grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-2">
-              {features.map((feature, index) => (
-                <FeatureItem key={feature.name} feature={feature} index={index} />
-              ))}
-            </div>
+          <div className="mx-auto mt-16 max-w-4xl sm:mt-20 lg:mt-24">
+            <FeatureItem feature={features[0]} index={0} />
           </div>
         </div>
       </div>
@@ -322,56 +223,20 @@ export default function Home() {
                 {[
                   { label: "会社名", value: companyInfo.name },
                   { label: "代表取締役", value: companyInfo.ceo },
-                  { label: "設立", value: companyInfo.established },
                   { label: "所在地", value: companyInfo.address },
-                  { label: "電話番号", value: companyInfo.phone },
-                  { label: "従業員数", value: companyInfo.employees },
-                  { label: "資本金", value: companyInfo.capital },
                 ].map((item, index) => (
                   <CompanyInfoItem key={item.label} item={item} index={index} />
                 ))}
               </div>
 
-              {/* メールアドレス */}
-              <div className="mt-8 p-6 bg-gray-50 rounded-2xl border border-gray-100">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">メールアドレス</h3>
-                <div className="space-y-3">
-                  <div className="flex items-center gap-3">
-                    <span className="px-3 py-1 bg-gray-200 text-gray-700 text-sm font-medium rounded-full">
-                      営業関連
-                    </span>
-                    <a
-                      href={`mailto:${companyInfo.mail.sales}`}
-                      className="text-gray-700 hover:text-gray-900 transition-colors duration-300 hover:underline"
-                    >
-                      {companyInfo.mail.sales}
-                    </a>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <span className="px-3 py-1 bg-gray-300 text-gray-700 text-sm font-medium rounded-full">IT関連</span>
-                    <a
-                      href={`mailto:${companyInfo.mail.it}`}
-                      className="text-gray-700 hover:text-gray-900 transition-colors duration-300 hover:underline"
-                    >
-                      {companyInfo.mail.it}
-                    </a>
-                  </div>
-                </div>
-              </div>
-
               {/* 事業内容 */}
               <div className="mt-8 p-6 bg-gray-50 rounded-2xl">
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">事業内容</h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {companyInfo.business.map((item) => (
-                    <div
-                      key={item}
-                      className="flex items-center gap-3 p-3 bg-white rounded-lg hover:shadow-md transition-all duration-300 hover:scale-105"
-                    >
-                      <div className="h-2 w-2 bg-gray-400 rounded-full" />
-                      <span className="text-gray-700 font-medium">{item}</span>
-                    </div>
-                  ))}
+                <div className="flex justify-center">
+                  <div className="flex items-center gap-3 p-4 bg-white rounded-lg hover:shadow-md transition-all duration-300 hover:scale-105">
+                    <div className="h-3 w-3 bg-gray-400 rounded-full" />
+                    <span className="text-gray-700 font-medium text-lg">{companyInfo.business[0]}</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -382,7 +247,7 @@ export default function Home() {
       {/* CTA セクション */}
       <div className="bg-gray-900 py-16">
         <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">ビジネスの成長を一緒に実現しませんか？</h2>
+          <h2 className="text-3xl font-bold text-white mb-4">不動産売買についてご相談ください</h2>
           <p className="text-xl text-gray-300 mb-8">お気軽にお問い合わせください</p>
           <button className="group px-8 py-4 bg-white text-gray-900 font-bold rounded-full hover:bg-gray-100 transition-all duration-300 hover:scale-105 hover:shadow-2xl">
             <span className="group-hover:text-black transition-colors duration-300">今すぐお問い合わせ</span>
