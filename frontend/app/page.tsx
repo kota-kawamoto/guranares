@@ -4,7 +4,7 @@ import Image from "next/image"
 import { useEffect, useRef, useState } from "react"
 
 const companyInfo = {
-  name: "株式会社グランアレス",
+  name: "",
   address: "",
   ceo: "",
   business: ["不動産売買"],
@@ -164,7 +164,7 @@ export default function Home() {
               <span className="text-5xl sm:text-7xl text-white font-black drop-shadow-2xl">安心・信頼の専門企業</span>
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-200 animate-fade-in-up">
-              株式会社グランアレスは、不動産売買の専門企業です。
+              不動産売買の専門企業です。
               <br />
               豊富な経験と実績を持つプロフェッショナルが、お客様の不動産取引をサポートいたします。
             </p>
@@ -199,7 +199,7 @@ export default function Home() {
               <span className="text-black">専門サービス</span>
             </p>
             <p className="mt-6 text-lg leading-8 text-gray-600">
-              株式会社グランアレスでは、不動産売買の専門サービスを提供し、お客様の不動産取引をサポートいたします。
+              不動産売買の専門サービスを提供し、お客様の不動産取引をサポートいたします。
             </p>
           </div>
 
