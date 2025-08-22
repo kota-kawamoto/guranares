@@ -4,9 +4,9 @@ import Image from "next/image"
 import { useEffect, useRef, useState } from "react"
 
 const companyInfo = {
-  name: "",
-  address: "",
-  ceo: "",
+  name: "株式会社グランアレス",
+  address: "神奈川県横浜市中区長者町1丁目2番地1 グランカーサ横濱石川町611号室",
+  ceo: "森田輝",
   business: ["不動産売買"],
 }
 
